@@ -188,11 +188,32 @@ async def youtube_dl_call_back(bot, update):
         logger.info(t_response)
         try:
             os.remove(save_ytdl_json_path)
+        except FileNotFoundError as exc:
+            pass
 
-    
+        end_one = datetime.now()
+        time_taken_for_download = (end_one - start).seconds
+      
+
+        download_location = f"{Config.DOWNLOAD_LOCATION}/{update.from_user.id}.jpg"
+        thumb = download_location if os.path.isfile(
+            download_location) else None
+
+        if ((file_size > Config.TG_MAX_FILE_SIZE)):
+            await update.message.edit_caption(
+
+                caption=Translation.RCHD_TG_API_LIMIT.format(
+                    time_taken_for_download, humanbytes(file_size))
+
+            )
+        else:
+            await update.message.edit_caption(
+                caption=Translation.UPLOAD_START.format(custom_file_name)
+
+            )
             start_time = time.time()
             if tg_send_type == "video":
-                width, height, duration = await Mdata01(  download_directory = os.path.splitext(
+                width, height, duration = await Mdata01(download_directory = os.path.splitext(
                 download_directory)[0] + "." + "mkv")
                 await update.message.reply_video(
                     # chat_id=update.message.chat.id,
@@ -212,7 +233,7 @@ async def youtube_dl_call_back(bot, update):
                     )
                 )
             elif tg_send_type == "audio":
-                duration = await Mdata03(  download_directory = os.path.splitext(
+                duration = await Mdata03(download_directory = os.path.splitext(
                 download_directory)[0] + "." + "m4a")
                 await update.message.reply_audio(
                     # chat_id=update.message.chat.id,
@@ -259,8 +280,9 @@ async def youtube_dl_call_back(bot, update):
                         start_time
                     )
                 )
+
             end_two = datetime.now()
-            time_taken_for_upload = "0"
+            time_taken_for_upload = 0
             try:
                 shutil.rmtree(tmp_directory_for_each_user)
             except Exception:
