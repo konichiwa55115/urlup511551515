@@ -26,9 +26,16 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 class Translation(object):
 
     START_TEXT = """
-Hi {} 
+السلام عليكم يا  {} 
 
-I am Powerful Url Uploader Bot
+أنا بوت رفع الملفات , فقط أرسل لي رابط تحميل مباشر و سأرفعه لك على تلجرام 
+
+ممنوع استخدام البوت لرفع شيء حرام 
+لبقية البوتات هنا 
+https://t.me/ibnAlQyyim/1120
+
+لدعم استمرار المشروع هنا 
+http://paypal.me/kelectronic89
  
 """
 
