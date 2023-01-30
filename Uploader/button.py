@@ -193,10 +193,6 @@ async def youtube_dl_call_back(bot, update):
 
         end_one = datetime.now()
         time_taken_for_download = (end_one - start).seconds
-        file_size = Config.TG_MAX_FILE_SIZE + 1
-        try:
-            file_size = os.stat(download_directory).st_size
-        except FileNotFoundError as exc:
             download_directory = os.path.splitext(
                 download_directory)[0] + "." + "mkv"
             # https://stackoverflow.com/a/678242/4723940
@@ -204,7 +200,7 @@ async def youtube_dl_call_back(bot, update):
         download_location = f"{Config.DOWNLOAD_LOCATION}/{update.from_user.id}.jpg"
         thumb = download_location if os.path.isfile(
             download_location) else None
-
+        try:
             await update.message.edit_caption(
                 caption=Translation.UPLOAD_START.format(custom_file_name)
 
