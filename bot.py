@@ -44,9 +44,9 @@ if __name__ == "__main__":
 
     plugins = dict(root="Uploader")
     Uploadbot = Client("All-Url-Uploader",
-                       bot_token="5579077143:AAFZxYKdXYzs00DMJRFAkzhHj7boKXm---8",
-                       api_id=17983098,
-                       api_hash=" ee28199396e0925f1f44d945ac174f64",
+                        bot_token=Config.BOT_TOKEN,
+                       api_id=Config.API_ID,
+                       api_hash=Config.API_HASH,
                        plugins=plugins)
     logger.info("Bot Started :)")
     Uploadbot.run()
