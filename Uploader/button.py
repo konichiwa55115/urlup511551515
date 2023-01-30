@@ -188,8 +188,6 @@ async def youtube_dl_call_back(bot, update):
         logger.info(t_response)
         try:
             os.remove(save_ytdl_json_path)
-        end_one = datetime.now()
-        time_taken_for_download = (end_one - start).seconds
         
         download_location = f"{Config.DOWNLOAD_LOCATION}/{update.from_user.id}.jpg"
         thumb = download_location if os.path.isfile(
