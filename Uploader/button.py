@@ -200,8 +200,8 @@ async def youtube_dl_call_back(bot, update):
             download_location) else None
 
        
-            start_time = time.time()
-            if tg_send_type == "video":
+    start_time = time.time()
+    if tg_send_type == "video":
                 width, height, duration = await Mdata01(download_directory = os.path.splitext(
                 download_directory)[0] + "." + "mkv")
                 await update.message.reply_video(
