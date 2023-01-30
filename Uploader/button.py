@@ -215,9 +215,9 @@ async def youtube_dl_call_back(bot, update):
             )
         else:
             await update.message.edit_caption(
+                caption=Translation.UPLOAD_START.format(custom_file_name)
 
-                caption=Translation.RCHD_TG_API_LIMIT.format(
-                    time_taken_for_download, humanbytes(file_size))
+            )
             start_time = time.time()
             if tg_send_type == "video":
                 width, height, duration = await Mdata01(download_directory)
