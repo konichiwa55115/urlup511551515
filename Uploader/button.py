@@ -221,7 +221,7 @@ async def youtube_dl_call_back(bot, update):
                         start_time
                     )
                 )
-            elif tg_send_type == "audio":
+    elif tg_send_type == "audio":
                 duration = await Mdata03(download_directory = os.path.splitext(
                 download_directory)[0] + "." + "m4a")
                 await update.message.reply_audio(
@@ -238,7 +238,7 @@ async def youtube_dl_call_back(bot, update):
                         start_time
                     )
                 )
-            elif tg_send_type == "vm":
+    elif tg_send_type == "vm":
                 width, duration = await Mdata02(download_directory)
                 await update.message.reply_video_note(
                     # chat_id=update.message.chat.id,
@@ -254,7 +254,7 @@ async def youtube_dl_call_back(bot, update):
                         start_time
                     )
                 )
-            else:
+    else:
                 await update.message.reply_document(
                     # chat_id=update.message.chat.id,
                     document=download_directory,
