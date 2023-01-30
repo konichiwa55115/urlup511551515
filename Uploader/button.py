@@ -270,8 +270,8 @@ async def youtube_dl_call_back(bot, update):
                     )
                 )
 
-            end_two = datetime.now()
-            time_taken_for_upload = 0
+    end_two = datetime.now()
+    time_taken_for_upload = 0
             try:
                 shutil.rmtree(tmp_directory_for_each_user)
             except Exception:
