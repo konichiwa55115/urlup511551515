@@ -1,9 +1,25 @@
-FROM python:3.10.6-slim-buster
+#Thank you LazyDeveloper for helping me in this journey !
+#Must Subscribe On YouTube @LazyDeveloperr
+# Python Based Docker
+# Python Based Docker
+FROM python:latest
 
-WORKDIR .
-COPY . .
+# Installing Packages
+RUN apt update && apt upgrade -y
+RUN apt install git curl python3-pip ffmpeg -y
 
-RUN pip3 install -r requirements.txt
+# Updating Pip Packages
+RUN pip3 install -U pip
 
-CMD ["python3", "bot.py"]
+# Copying Requirements
+COPY requirements.txt /requirements.txt
 
+# Installing Requirements
+RUN cd /
+RUN pip3 install -U -r requirements.txt
+RUN mkdir /LazyDeveloper
+WORKDIR /LazyDeveloper
+COPY start.sh /start.sh
+
+# Running MessageSearchBot
+CMD ["/bin/bash", "/start.sh"]
