@@ -259,15 +259,3 @@ async def youtube_dl_call_back(bot, update):
                         start_time
                     )
                 )
-
-            end_two = datetime.now()
-            time_taken_for_upload = (end_two - end_one).seconds
-            try:
-                shutil.rmtree(tmp_directory_for_each_user)
-            except Exception:
-                pass
-            await update.message.edit_caption(
-                caption=Translation.AFTER_SUCCESSFUL_UPLOAD_MSG_WITH_TS.format(
-                    time_taken_for_download, time_taken_for_upload)
-
-            )
