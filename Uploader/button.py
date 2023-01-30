@@ -200,20 +200,11 @@ async def youtube_dl_call_back(bot, update):
             download_directory = os.path.splitext(
                 download_directory)[0] + "." + "mkv"
             # https://stackoverflow.com/a/678242/4723940
-            file_size = os.stat(download_directory).st_size
 
         download_location = f"{Config.DOWNLOAD_LOCATION}/{update.from_user.id}.jpg"
         thumb = download_location if os.path.isfile(
             download_location) else None
 
-        if ((file_size > Config.TG_MAX_FILE_SIZE)):
-            await update.message.edit_caption(
-
-                caption=Translation.RCHD_TG_API_LIMIT.format(
-                    time_taken_for_download, humanbytes(file_size))
-
-            )
-        else:
             await update.message.edit_caption(
                 caption=Translation.UPLOAD_START.format(custom_file_name)
 
