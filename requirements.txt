@@ -1,3 +1,5 @@
+ffmpeg
+ffmpeg-python
 beautifulsoup4
 hachoir
 numpy
