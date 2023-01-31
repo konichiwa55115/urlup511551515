@@ -2,7 +2,7 @@
 #Must Subscribe On YouTube @LazyDeveloperr
 # Python Based Docker
 # Python Based Docker
-FROM python:latest
+FROM python:3.10.6-slim-buster
 
 # Installing Packages
 RUN apt update && apt upgrade -y
